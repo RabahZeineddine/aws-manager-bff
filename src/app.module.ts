@@ -4,6 +4,7 @@ import { SharedIniFileCredentials, SQS, Credentials } from 'aws-sdk';
 import { AwsSdkModule } from 'nest-aws-sdk';
 import env, { AWS_CONFIGURATIONS } from './config/env';
 import { SQSQueuesModule } from './resources/SQS/Queues/SQSQueues.module';
+import { SNSTopicsModule } from './resources/SNS/Topics/SNSTopics.module';
 
 
 @Module({
@@ -28,6 +29,7 @@ import { SQSQueuesModule } from './resources/SQS/Queues/SQSQueues.module';
       },
     }),
     SQSQueuesModule,
+    SNSTopicsModule,
   ],
   controllers: [],
   providers: []
