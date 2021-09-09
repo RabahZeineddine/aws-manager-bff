@@ -9,3 +9,7 @@ export class CreateQueueDTO {
 export class DeleteQueueDTO {
   url: string
 }
+
+export class FindOneQueueParamsDTO {
+  queueName: string
+}

@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { SQS } from 'aws-sdk';
 import { InjectAwsService } from 'nest-aws-sdk';
-import { CreateQueueDTO, DeleteQueueDTO } from './dto/index';
+import { CreateQueueDTO, DeleteQueueDTO, FindOneQueueParamsDTO } from './dto/index';
 
 @Injectable()
 export class SQSQueuesService {
@@ -16,14 +16,14 @@ export class SQSQueuesService {
     return queueUrls.map((queueUrl: string) => {
       const splittedUrl = queueUrl.split('/')
       return {
-        queueUrl,
+        QueueUrl: queueUrl,
         name: splittedUrl[splittedUrl.length - 1]
       }
     })
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} sq`;
+  async findOne(params: FindOneQueueParamsDTO) {
+    const response = await this.sqsService.getQueueUrl()
   }
 
   async create(queueData: CreateQueueDTO) {

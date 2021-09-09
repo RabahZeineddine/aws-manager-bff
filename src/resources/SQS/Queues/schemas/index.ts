@@ -9,3 +9,8 @@ export const createQueueSchema = Joi.object({
 export const deleteQueueSchema = Joi.object({
   url: Joi.string().required()
 })
+
+
+export const findOneQueueParamsSchema = Joi.object({
+  queueUrl: Joi.string().uri().required()
+})

@@ -1,8 +1,8 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete, UsePipes } from '@nestjs/common';
 import { SQSQueuesService } from './SQSQueues.service';
 import { JoiValidationPipe } from '../../../pipes/JoiValidation/JoiValidation.pipe';
-import { createQueueSchema, deleteQueueSchema } from './schemas/index';
-import { CreateQueueDTO, DeleteQueueDTO } from './dto/index';
+import { createQueueSchema, deleteQueueSchema, findOneQueueParamsSchema } from './schemas/index';
+import { CreateQueueDTO, DeleteQueueDTO, FindOneQueueParamsDTO } from './dto/index';
 
 @Controller('SQS/queues')
 export class SQSQueuesController {
@@ -13,9 +13,10 @@ export class SQSQueuesController {
     return await this.sqsQueuesService.findAll();
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.sqsQueuesService.findOne(+id);
+  @Get(':url')
+  @UsePipes(new JoiValidationPipe(findOneQueueParamsSchema))
+  findOne(@Param() params: FindOneQueueParamsDTO) {
+    return this.sqsQueuesService.findOne(params);
   }
 
   @Post()
