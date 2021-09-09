@@ -5,10 +5,15 @@ import { AwsSdkModule } from 'nest-aws-sdk';
 import env, { AWS_CONFIGURATIONS } from './config/env';
 import { SQSQueuesModule } from './resources/SQS/Queues/SQSQueues.module';
 import { SNSTopicsModule } from './resources/SNS/Topics/SNSTopics.module';
+import { ServeStaticModule } from '@nestjs/serve-static'
+import { join } from 'path'
 
 
 @Module({
   imports: [
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, '..', 'public'),
+    }),
     ConfigModule.forRoot({
       isGlobal: true,
       load: [env, AWS_CONFIGURATIONS]
