@@ -7,5 +7,7 @@ export interface EnvConfiguration {
 export interface AwsConfiguration {
   endpoint: string;
   region: string;
-  profile: string
+  profile: string;
+  accessKeyId: string;
+  secretAccessKey: string;
 }

@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
-import { SharedIniFileCredentials, SQS, Credentials } from 'aws-sdk';
+import { Credentials } from 'aws-sdk';
 import { AwsSdkModule } from 'nest-aws-sdk';
 import env, { AWS_CONFIGURATIONS } from './config/env';
 import { SQSQueuesModule } from './resources/SQS/Queues/SQSQueues.module';
@@ -23,8 +23,9 @@ import { join } from 'path'
         useFactory: (cs: ConfigService) => {
           return {
             region: cs.get<string>("AWS.region"),
-            credentials: new SharedIniFileCredentials({
-              profile: cs.get<string>("AWS.profile")
+            credentials: new Credentials({
+              accessKeyId: cs.get<string>("AWS.accessKeyId"),
+              secretAccessKey: cs.get<string>("AWS.secretAccessKey"),
             }),
             endpoint: cs.get<string>("AWS.endpoint")
           };

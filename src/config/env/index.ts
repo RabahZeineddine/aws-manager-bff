@@ -9,5 +9,7 @@ export default (): EnvConfiguration => ({
 export const AWS_CONFIGURATIONS = registerAs("AWS", (): AwsConfiguration => ({
   endpoint: process.env.AWS_ENDPOINT_URL,
   region: process.env.AWS_DEFAULT_REGION,
-  profile: process.env.AWS_PROFILE
+  profile: process.env.AWS_PROFILE,
+  accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
 }))
