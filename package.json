@@ -1,8 +1,8 @@
 {
-  "name": "aws-api",
+  "name": "aws-manager-bff",
   "version": "0.0.1",
-  "description": "",
-  "author": "",
+  "description": "AWS Manager BFF",
+  "author": "Rabah Zeineddine",
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
