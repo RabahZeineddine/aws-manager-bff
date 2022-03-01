@@ -27,7 +27,7 @@ import { join } from 'path'
               accessKeyId: cs.get<string>("AWS.accessKeyId"),
               secretAccessKey: cs.get<string>("AWS.secretAccessKey"),
             }),
-            endpoint: cs.get<string>("AWS.endpoint")
+            endpoint: cs.get<string>("AWS.endpoint"),
           };
         },
         imports: [ConfigModule],
